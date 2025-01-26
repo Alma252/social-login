@@ -156,8 +156,8 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'online',
         },
         'APP': {
-            'client_id': '248004125372-c8h4vkl1243h72b2tvsvh56ls1g9oo1r.apps.googleusercontent.com',
-            'secret': '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',
+            'client_id': 'Your client_id',
+            'secret': 'Your secret_id ',
             'key': ''
         },
         'OAUTH_PKCE_ENABLED': True,

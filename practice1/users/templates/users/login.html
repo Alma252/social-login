@@ -1,4 +1,6 @@
 {% load crispy_forms_tags %}
+{% load socialaccount %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <style>
         body {
             background: linear-gradient(45deg, #4e79a7, #48c6ef);
@@ -44,12 +45,10 @@
             border: 1px solid #ddd;
             background-color: #f7f7f7;
             color: #333;
-            box-sizing: border-box;
             transition: all 0.3s ease-in-out;
         }
         .form-control:focus {
             border-color: #007bff;
-            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
             background-color: #fff;
         }
         .btn {
@@ -60,31 +59,28 @@
             cursor: pointer;
             transition: all 0.3s ease-in-out;
         }
-        .btn-outline-info {
-            background-color: #007bff;
-            border: none;
-            color: #fff;
-            transition: background-color 0.3s;
-        }
-        .btn-outline-info:hover {
-            background-color: #0056b3;
-        }
         .google-btn {
-            background-color: #db4437;
-            border: none;
+            background: linear-gradient(45deg, #4285F4, #34A853, #FBBC05, #EA4335);
+            background-size: 300%;
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 12px;
-            border-radius: 10px;
-            cursor: pointer;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease-in-out;
         }
         .google-btn:hover {
-            background-color: #c1351d;
+            background-position: right;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         .google-icon {
-            margin-right: 10px; /* فاصله بین آیکن و متن */
+            margin-right: 10px;
             width: 24px;
             height: 24px;
         }
@@ -93,34 +89,14 @@
             margin-top: 20px;
         }
         .footer-links a {
-            color: #007bff;
+            color: black;
             text-decoration: none;
             font-size: 14px;
+            font-weight: bold;
         }
         .footer-links a:hover {
             text-decoration: underline;
         }
-        .btn:focus, .form-control:focus {
-            outline: none;
-        }
-        .form-control::placeholder {
-            color: #999;
-        }
-        .btn-google {
-            font-size: 16px;
-            background-color: #4285F4;
-            color: white;
-            border-radius: 10px;
-            padding: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .btn-google:hover {
-            background-color: #357ae8;
-        }
-
-        /* Added style for the black color text */
         .footer-links .text-muted {
             color: black !important;
         }
@@ -142,10 +118,10 @@
             <button class="btn btn-outline-info" type="submit">Login</button>
         </div>
         <div class="form-group">
-            <button class="btn google-btn" type="button">
-                <img src="https://img.icons8.com/ios/50/000000/google-logo.png=" alt="Google" class="google-icon"/>
+            <a href="{% provider_login_url 'google' %}?next=/" class="google-btn">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/google-logo.png" alt="Google" class="google-icon"/>
                 Sign in with Google
-            </button>
+            </a>
         </div>
     </form>
     <div class="footer-links">
